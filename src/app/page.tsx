@@ -55,7 +55,7 @@ export default function Home() {
             onMouseLeave={() => setIsMusicImageHovered(false)}
           >
             <div
-              className={`absolute inset-0 bg-center bg-cover bg-no-repeat transition-all duration-500 ${
+              className={`absolute inset-0 bg-top bg-cover bg-no-repeat transition-all duration-500 ${
                 isMusicImageHovered
                   ? "blur-none opacity-100"
                   : "blur-sm opacity-75"
