@@ -7,7 +7,7 @@ export default function Home() {
   const [isMusicImageHovered, setIsMusicImageHovered] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (event: { clientX: number }) => {
+    const handleMouseMove = (event) => {
       const windowWidth = window.innerWidth;
       setIsDevImageHovered(event.clientX < windowWidth / 2);
       setIsMusicImageHovered(event.clientX >= windowWidth / 2);
@@ -25,48 +25,52 @@ export default function Home() {
       <div className="grid grid-cols-2 h-full">
         <Link href="https://music.maxwellyoung.info" passHref>
           <div
-            className={`flex items-center justify-center h-full bg-top bg-cover bg-no-repeat relative transition-all duration-500 ${
-              isDevImageHovered ? "blur-none opacity-100" : "blur-sm opacity-75"
-            }`}
-            style={{
-              backgroundImage: `url('/dev.jpeg')`,
-              border: "none", // Ensure no border
-              outline: "none", // Ensure no outline
-            }}
+            className={`relative h-full transition-all duration-500`}
             onMouseEnter={() => setIsDevImageHovered(true)}
             onMouseLeave={() => setIsDevImageHovered(false)}
           >
-            <span
-              className={`text-3xl font-light ${
-                isDevImageHovered ? "text-white" : "text-zinc-300"
-              } opacity-75 z-10`}
-            >
-              dev
-            </span>
+            <div
+              className={`absolute inset-0 bg-top bg-cover bg-no-repeat transition-all duration-500 ${
+                isDevImageHovered
+                  ? "blur-none opacity-100"
+                  : "blur-sm opacity-75"
+              }`}
+              style={{
+                backgroundImage: `url('/dev.jpeg')`,
+              }}
+            ></div>
+            {!isDevImageHovered && (
+              <div className="relative flex items-center justify-center h-full z-10">
+                <span className="text-3xl font-light text-zinc-300 opacity-75">
+                  music
+                </span>
+              </div>
+            )}
           </div>
         </Link>
         <Link href="https://dev.maxwellyoung.info/" passHref>
           <div
-            className={`flex items-center justify-center h-full bg-center bg-cover bg-no-repeat relative transition-all duration-500 ${
-              isMusicImageHovered
-                ? "blur-none opacity-100"
-                : "blur-sm opacity-75"
-            }`}
-            style={{
-              backgroundImage: `url('/music.jpeg')`,
-              border: "none", // Ensure no border
-              outline: "none", // Ensure no outline
-            }}
+            className={`relative h-full transition-all duration-500`}
             onMouseEnter={() => setIsMusicImageHovered(true)}
             onMouseLeave={() => setIsMusicImageHovered(false)}
           >
-            <span
-              className={`text-3xl font-light ${
-                isMusicImageHovered ? "text-white" : "text-zinc-300"
-              } opacity-75 z-10`}
-            >
-              music
-            </span>
+            <div
+              className={`absolute inset-0 bg-center bg-cover bg-no-repeat transition-all duration-500 ${
+                isMusicImageHovered
+                  ? "blur-none opacity-100"
+                  : "blur-sm opacity-75"
+              }`}
+              style={{
+                backgroundImage: `url('/music.jpeg')`,
+              }}
+            ></div>
+            {!isMusicImageHovered && (
+              <div className="relative flex items-center justify-center h-full z-10">
+                <span className="text-3xl font-light text-zinc-300 opacity-75">
+                  dev
+                </span>
+              </div>
+            )}
           </div>
         </Link>
       </div>
