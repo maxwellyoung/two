@@ -7,7 +7,7 @@ export default function Home() {
   const [isMusicImageHovered, setIsMusicImageHovered] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: { clientX: number }) => {
       const windowWidth = window.innerWidth;
       setIsDevImageHovered(event.clientX < windowWidth / 2);
       setIsMusicImageHovered(event.clientX >= windowWidth / 2);
