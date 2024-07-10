@@ -36,7 +36,7 @@ export default function Home() {
                   : "blur-sm opacity-75"
               }`}
               style={{
-                backgroundImage: `url('/dev.jpeg')`,
+                backgroundImage: `url('/music.jpeg')`,
               }}
             ></div>
             {!isDevImageHovered && (
@@ -61,7 +61,7 @@ export default function Home() {
                   : "blur-sm opacity-75"
               }`}
               style={{
-                backgroundImage: `url('/music.jpeg')`,
+                backgroundImage: `url('/dev.jpeg')`,
               }}
             ></div>
             {!isMusicImageHovered && (
